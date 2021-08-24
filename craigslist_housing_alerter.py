@@ -12,7 +12,7 @@ import os
 ### CONSTS ======================================
 
 FILENAME = "links.txt"
-URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=datehttps://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=date"
+URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=date"
 BROWSER = "chromium"
 
 
