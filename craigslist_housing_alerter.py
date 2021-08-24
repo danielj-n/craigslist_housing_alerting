@@ -61,13 +61,21 @@ while 1 :
 	links = list(set(re.findall(r"https.*\/van\/apa\/d.*\.html", raw_page)))
 	print("looking at found links (" + str(len(links)) + ")...")
 
-	# Check for new links, add new ones to file, print them, open them
+	# Check for new links, add new ones to file
+	browser_args = []
 	for link in links :
 		if link not in seen_links :
 			print(">>> NEW LINK: " + link)
 			seen_links.append(link)
 			append_file(FILENAME, link+"\n")
-			os.system(BROWSER + " " + link)
+			browser_args.append(link)
+
+	# Print new links, open them in browser
+	if len(browser_args) > 0 :
+		command = BROWSER + "".join([" " + a for a in browser_args]) \
+			  + " &"
+		print ("Found " + str(len(browser_args)) + " new link(s)")
+		os.system(command)	
 	print("Currently " + str(len(seen_links)) + " links.")
 	print("-----------------------")
 
