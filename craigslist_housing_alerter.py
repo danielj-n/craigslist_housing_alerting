@@ -13,6 +13,7 @@ import os
 
 FILENAME = "links.txt"
 URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=datehttps://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=date"
+BROWSER = "chromium"
 
 
 ### FUNCTIONS ===================================
@@ -45,7 +46,10 @@ def load_file(filename) :
 ### SCRIPT ======================================
 
 # Setup: load previously seen links so we don't open them again
-seen_links = load_file(FILENAME)
+try :
+	seen_links = load_file(FILENAME)
+except FileNotFoundError :
+	seen_links = []
 print("Loaded " + str(len(seen_links)) + " links.")
 
 # Main loop: Keep loading the page and checking for new links
@@ -63,7 +67,7 @@ while 1 :
 			print(">>> NEW LINK: " + link)
 			seen_links.append(link)
 			append_file(FILENAME, link+"\n")
-			os.system("chromium " + link)
+			os.system(BROWSER + " " + link)
 	print("Currently " + str(len(seen_links)) + " links.")
 	print("-----------------------")
 
