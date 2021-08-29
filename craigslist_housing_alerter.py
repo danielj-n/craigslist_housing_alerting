@@ -12,8 +12,10 @@ import os
 ### CONSTS ======================================
 
 FILENAME = "links.txt"
+SOUNDFILE = "alert.mp3"
 URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=date"
 BROWSER = "chromium"
+MEDIA_PLAYER = "play -q"
 
 
 ### FUNCTIONS ===================================
@@ -70,12 +72,14 @@ while 1 :
 			append_file(FILENAME, link+"\n")
 			browser_args.append(link)
 
-	# Print new links, open them in browser
+	# Print new links, open them in browser, play alert sound if possible
 	if len(browser_args) > 0 :
 		command = BROWSER + "".join([" " + a for a in browser_args]) \
 			  + " &"
 		print ("Found " + str(len(browser_args)) + " new link(s)")
 		os.system(command)	
+		os.system(MEDIA_PLAYER + " " + SOUNDFILE + " &")
+		time.sleep(1)
 	print("Currently " + str(len(seen_links)) + " links.")
 	print("-----------------------")
 
