@@ -13,7 +13,7 @@ import os
 
 FILENAME = "links.txt"
 SOUNDFILE = "alert.mp3"
-URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1700&postal=V6R2J1&search_distance=9&sort=date"
+URL = "https://vancouver.craigslist.org/search/apa?availabilityMode=0&max_price=1800&postal=V6R2J1&search_distance=9&sort=date"
 BROWSER = "chromium"
 MEDIA_PLAYER = "play -q"
 
